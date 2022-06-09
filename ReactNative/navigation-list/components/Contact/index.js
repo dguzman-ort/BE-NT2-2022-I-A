@@ -2,19 +2,19 @@ import { Text } from "react-native"
 import { Card } from '@rneui/themed';
 
 export default ({ contact }) => {
-    console.log(contact)
+    // console.log(contact)
     return (
         <Card containerStyle={{ marginTop: 15 }}>
             <Card.Title>Contact #{contact.id}</Card.Title>
             <Card.Divider />
             <Text h1>
-                Nombre: {contact.nombreCompleto}
-            </Text>
+                NOMBRE: {contact.name}
+            </Text>            
             <Text h2>
-                Telefono: {contact.telefono}
+                TELEFONO: {contact.phone}
             </Text>
             <Text h3>
-                Edad: {contact.edad}
+                Email: {contact.email}
             </Text>
         </Card>
     )

@@ -18,22 +18,27 @@ const Home = ({ navigation }) => {
 
     useEffect(() => {
         console.log("Esto se ejecuta la 1era vez que inicia mi componente: ")
-        contactService.getContacts().then(data => {
+        contactService.getContacts().then(res => res.json())
+        .then(data => {
+            console.log("Recibe data", data)
             setContacts(data)
+        })
+        .catch(error => {
+            console.log(error)
         })
     }, [])
 
     return (
         <View style={styles.container}>
-            {/* <Text>HOME.</Text>
+            
 
-            <Button title="Ir a detalle" onPress={() => {
+            <Button title="Ir a Profile" onPress={() => {
                 // navigation.navigate("Detalles", { nombre })
-                navigation.navigate("Detalles")
-            }} /> */}
+                navigation.navigate("Profile")
+            }} /> 
             <View>
-                <ContactsScrollView contacts={contacts} navigation={navigation} />         
-                {/* <ContactsFlatList contacts={contacts} /> */}
+                {/* <ContactsScrollView contacts={contacts} navigation={navigation} />          */}
+                <ContactsFlatList contacts={contacts} navigation={navigation} />
             </View>
 
         </View>

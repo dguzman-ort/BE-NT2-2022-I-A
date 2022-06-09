@@ -37,10 +37,10 @@ const crearContacto = () => {
 }
 
 const prueba = crearContacto()
-console.log(prueba, prueba.nombreCompleto[0])
+// console.log(prueba, prueba.nombreCompleto[0])
 
 
-
+const BASE_URL = "https://jsonplaceholder.typicode.com"
 
 let contactos = Array.from({
     length: CANTIDAD_CONTACTOS
@@ -51,15 +51,30 @@ let contactos = Array.from({
 const getContacts = () => {
     //TODO: Apply the API FETCH
 
-    return new Promise((resolve, reject) => {
-        return resolve(contactos)
-    })
+    return fetch(`${BASE_URL}/users`)
+    
+    
+
+    // return new Promise((resolve, reject) => {
+    //     return resolve(contactos)
+    // })
 }
 
 const getContactDetails = (id) => {
+
+    return fetch(`${BASE_URL}/users/${id}`)
+    // return new Promise((resolve, reject) => {
+    //     const contact = contactos.find(item => item.id === id)
+    //     return resolve(contact)
+    // })
+}
+
+const updateContact = (id) => {
     return new Promise((resolve, reject) => {
-        const contact = contactos.find(item => item.id === id)
-        return resolve(contact)
+
+        contactos = contactos.filter(item => item.id !== id)
+        
+        return resolve(true)
     })
 }
 
