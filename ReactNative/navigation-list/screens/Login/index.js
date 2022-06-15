@@ -25,7 +25,7 @@ const Login = () => {
             const { authentication } = response;
             console.log(authentication)
 
-
+            //TODO: Enviar data a backend para que valide datos de usuario. 
             fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${authentication.accessToken}`)
             .then(res => res.json())
             .then(data => setAuthenticationData(data))
